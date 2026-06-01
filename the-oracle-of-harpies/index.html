@@ -91,23 +91,36 @@ background: rgba(0,0,0,.85);
 }
 
 .modal-content {
-max-width: 900px;
-margin: 40px auto;
+max-width: 800px;
+max-height: 90vh;
+overflow-y: auto;
+
+margin: 20px auto;
+
 background: #111;
 padding: 20px;
 border-radius: 12px;
 }
 
+
 .modal-content img {
 width: 100%;
-max-width: 600px;
+max-width: 450px;
+height: auto;
 }
 
 .close {
+position: sticky;
+top: 0;
+
 float: right;
 font-size: 32px;
 cursor: pointer;
+
+background: #111;
+padding: 5px 10px;
 }
+
 
   </style>
 </head>
@@ -165,101 +178,207 @@ function drawCard() {
 function shuffle(array) {
 return [...array].sort(() => Math.random() - 0.5);
 }
+let currentFlock = [];
 
 function drawFlock() {
-  const flock = shuffle(cards).slice(0, 5);
+  currentFlock = shuffle(cards).slice(0, 5);
+const flock = currentFlock;
 
   document.getElementById("reading").innerHTML = `
     <h2>The Flock Spread</h2>
 
-    <div class="spread">
-      <div class="flock-card pos3">
-        <h3>3 — What Watches Over You</h3>
-        <img src="images/${flock[2].image}" alt="${flock[2].title}" onclick='openCard(${JSON.stringify(flock[2])})'>
+<div class="spread">
 
-        <p>${flock[2].title}</p>
-      </div>
+  <div class="flock-card pos3">
+    <h3>3 — What Watches Over You</h3>
+    <img src="images/${flock[2].image}"
+         alt="${flock[2].title}"
+         onclick='openFlockCard(2, "3 — What Watches Over You")'>
+    <p>${flock[2].title}</p>
+  </div>
 
-      <div class="flock-card pos2">
-        <h3>2 — What Was Lost</h3>
-        <img src="images/${flock[1].image}" alt="${flock[1].title}" onclick='openCard(${JSON.stringify(flock[1])})'>
-        <p>${flock[1].title}</p>
-      </div>
+  <div class="flock-card pos2">
+    <h3>2 — What Was Lost</h3>
+    <img src="images/${flock[1].image}"
+         alt="${flock[1].title}"
+         onclick='openFlockCard(1, "2 — What Was Lost")'>
+    <p>${flock[1].title}</p>
+  </div>
 
-      <div class="flock-card pos4">
-        <h3>4 — What Must Be Reclaimed</h3>
-        <img src="images/${flock[3].image}" alt="${flock[3].title}" onclick='openCard(${JSON.stringify(flock[3])})'>
-        <p>${flock[3].title}</p>
-      </div>
+  <div class="flock-card pos4">
+    <h3>4 — What Must Be Reclaimed</h3>
+    <img src="images/${flock[3].image}"
+         alt="${flock[3].title}"
+         onclick='openFlockCard(3, "4 — What Must Be Reclaimed")'>
+    <p>${flock[3].title}</p>
+  </div>
 
-      <div class="flock-card pos1">
-        <h3>1 — The Wound</h3>
-        <img src="images/${flock[0].image}" alt="${flock[0].title}">
-        <p>${flock[0].title}</p>
-      </div>
+  <div class="flock-card pos1">
+    <h3>1 — The Wound</h3>
+    <img src="images/${flock[0].image}"
+         alt="${flock[0].title}"
+         onclick='openFlockCard(0, "1 — The Wound")'>
+    <p>${flock[0].title}</p>
+  </div>
 
-      <div class="flock-card pos5">
-        <h3>5 — The Harpy's Gift</h3>
-        <img src="images/${flock[4].image}" alt="${flock[4].title}" onclick='openCard(${JSON.stringify(flock[4])})'>
-        <p>${flock[4].title}</p>
-      </div>
-    </div>
+  <div class="flock-card pos5">
+    <h3>5 — The Harpy's Gift</h3>
+    <img src="images/${flock[4].image}"
+         alt="${flock[4].title}"
+         onclick='openFlockCard(4, "5 — The Harpy&apos;s Gift")'>
+    <p>${flock[4].title}</p>
+  </div>
+
+</div>
+  
 
     <hr>
 
     <div class="harpy-reading">
-
-<h2>The Harpies Say</h2>
-
-<p>${generateReading(flock)}</p>
-
-</div>
+      <h2>The Harpies Say</h2>
+      <p>${generateReading(flock)}</p>
+    </div>
   `;
 }
-function openCard(card) {
 
-document.getElementById("modalBody").innerHTML = ` <h2>${card.title}</h2>
+const spreadPositions = {
+  "1 — The Wound": "What hurts? What is asking for acknowledgment?",
+  "2 — What Was Lost": "What was taken, forgotten, abandoned, or surrendered?",
+  "3 — What Watches Over You": "Hidden allies, intuition, ancestors, and unseen support.",
+  "4 — What Must Be Reclaimed": "The strength, truth, or gift ready to return.",
+  "5 — The Harpy's Gift": "The wisdom emerging from the restoration journey."
+};
+function openFlockCard(index, position) {
+  openCard(currentFlock[index], position);
+}
+function openCard(card, position) {
+  const positionMeaning = spreadPositions[position] || "";
 
-<img src="images/${card.image}" alt="${card.title}">
+  document.getElementById("modalBody").innerHTML = `
+    <h2>${card.title}</h2>
+    <h3>${position || ""}</h3>
+    <p><em>${positionMeaning}</em></p>
+    <img src="images/${card.image}" alt="${card.title}">
+    <p><em>${card.keywords.join(" • ")}</em></p>
+    <h3>Oracle</h3>
+    <p>${card.oracle}</p>
+    <h3>Meaning</h3>
+    <p>${card.meaning}</p>
+  `;
 
-<p><em>${card.keywords.join(" • ")}</em></p>
-
-<h3>Oracle</h3>
-
-<p>${card.oracle}</p>
-
-<h3>Meaning</h3>
-
-<p>${card.meaning}</p>
-
-`;
-
-document.getElementById("cardModal").style.display = "block";
+  document.getElementById("cardModal").style.display = "block";
 }
 
 function closeModal() {
-document.getElementById("cardModal").style.display = "none";
+  document.getElementById("cardModal").style.display = "none";
 }
 
-function generateReading(flock) {
+const positionMeanings = {
+
+  "The Sun": {
+    wound: "An injury to confidence, vitality, joy, clarity, or personal truth."
+  },
+
+  "The Pearl": {
+    loss: "A loss of innocence, wonder, possibility, or unrealized potential."
+  },
+
+  "The Bat": {
+    guide: "Support arrives through a shift in perspective. Trust your other senses."
+  },
+
+  "The Angel": {
+    reclaim: "Balance, integration, and healing are ready to return."
+  },
+
+  "The Ear": {
+    gift: "A deeper calling is emerging. Listen carefully."
+  }
+
+};
+
+  function generateReading(flock) {
+
+  const wound =
+    positionMeanings[flock[0].title]?.wound ||
+    `${flock[0].title} reveals the central wound asking for your attention.`;
+
+  const woundLoss =
+    relationships[
+      `${flock[0].title}|${flock[1].title}`
+    ] ||
+    relationships[
+      `${flock[1].title}|${flock[0].title}`
+    ] ||
+    "";
+
+  const guideReclaim =
+    relationships[
+      `${flock[2].title}|${flock[3].title}`
+    ] ||
+    relationships[
+      `${flock[3].title}|${flock[2].title}`
+    ] ||
+    "";
+
   return `
-    You are moving through a period of transformation.
+    ${wound}
 
-    ${flock[0].title} reveals the central wound asking for your attention.
+    ${flock[1].title} suggests something valuable has been lost, forgotten, abandoned, or taken from you.
 
-    ${flock[1].title} suggests something valuable has been lost, forgotten, or taken from you.
+    ${woundLoss}
 
     Yet ${flock[2].title} appears as a guide, reminding you that support is present even when it cannot be clearly seen.
 
     ${flock[3].title} points toward the strength, truth, or capacity that is ready to be reclaimed.
 
+    ${guideReclaim}
+
     Finally, ${flock[4].title} emerges as the Harpy's Gift: the wisdom carried forward from this experience.
 
     The Harpies do not promise justice.
 
-    They remind us that restoration remains possible, even when justice never arrived.
+    They remind us that restoration remains possible even when justice never arrived.
   `;
 }
+
+  const relationships = {
+  "The Bat|The Angel":
+    "A change in perspective precedes the return of balance.",
+
+  "The Sun|The Pearl":
+    "Something dimmed your light and narrowed your sense of possibility.",
+
+  "The Thorn|The Torch":
+    "Pain is being transformed into power.",
+
+  "The Moon|The Ear":
+    "Something emerging from the unconscious is asking to be heard.",
+
+  "The Selkie|The Harpy":
+    "The exile returns carrying hard-won sovereignty.",
+
+  "The Ear|The Starling":
+    "A message once ignored is ready to be heard.",
+
+  "The Moon|The Well":
+    "What was hidden beneath the surface is seeking expression.",
+
+  "The Goat|The Mountain":
+    "Persistence reveals a path where none seemed possible.",
+
+  "The Cave|The Torch":
+    "Illumination arrives after a period of retreat.",
+
+  "The Wheel|The Storm":
+    "The forces disrupting your life are also reshaping it.",
+
+  "The Vulture|The Pearl":
+    "Something once mourned may still contain hidden value.",
+
+  "The Lightning|The Angel":
+    "A shock becomes the catalyst for realignment."
+};
 
 </script>
 
