@@ -1,178 +1,582 @@
 [
-{
-"number": 0,
-"title": "The Pearl",
-"keywords": [
-"Potential",
-"Void",
-"Origin"
-],
-"oracle": "Trust what is gestating. Not all treasures are meant to be opened at once.",
-"meaning": "The Pearl represents pure possibility. It is the cosmic egg, the hidden treasure, the self before form. Within the Pearl lies every future choice, challenge, gift, and transformation. When this card appears, you stand at the threshold of becoming.",
-"image": "00-the-pearl.png"
-},
-{
-"number": 1,
-"title": "The Ear",
-"keywords": [
-"Unity",
-"Beginning",
-"Will"
-],
-"oracle": "What is being called into existence?",
-"meaning": "Before there was movement, there was vibration. The Sound is the first impulse toward creation, the moment potential chooses expression. This card signals a beginning, a call, or a declaration that can no longer remain unspoken.",
-"image": "01-the-ear.png"
-},
-{
-"number": 10,
-"title": "The Wheel",
-"keywords": ["Cycles", "Fate", "Renewal"],
-"oracle": "What cycle is ready to turn?",
-"meaning": "The Wheel turns ceaselessly. Fortune rises and falls, seasons change, and every ending contains a beginning. The Sphinx reminds us that wisdom is found in understanding the pattern.",
-"image": "10-the-wheel.png"
-},
-{
-"number": 11,
-"title": "The Mirror",
-"keywords": ["Truth", "Awakening", "Self-Knowledge"],
-"oracle": "See yourself without distortion.",
-"meaning": "The Mirror reveals what is, not what we wish to see. This card invites honesty, accountability, and clear perception.",
-"image": "11-the-mirror.png"
-},
-{
-"number": 12,
-"title": "The Bat",
-"keywords": ["Perspective", "Surrender", "Navigation"],
-"oracle": "Trust what cannot yet be seen.",
-"meaning": "The Bat moves through darkness by trusting senses beyond sight. This card suggests the pause experienced during a reversal, or a shift in perspective.",
-"image": "12-the-bat.png"
-},
-{
-"number": 13,
-"title": "The Thorn",
-"keywords": ["Transformation", "Wounding", "Awakening"],
-"oracle": "Honor the lesson within the wound.",
-"meaning": "The Thorn pierces illusion. Though painful, its purpose is growth. This card often appears when a necessary change can no longer be avoided.",
-"image": "13-the-thorn.png"
-},
-{
-"number": 14,
-"title": "The Angel",
-"keywords": ["Balance", "Integration", "Alchemy"],
-"oracle": "Bring opposing forces into balance.",
-"meaning": "The Angel pours one vessel into another, blending opposites into harmony. This card speaks of healing, moderation, and the sacred art of integration.",
-"image": "14-the-angel.png"
-},
-{
-"number": 15,
-"title": "The Torch",
-"keywords": ["Power", "Desire", "Responsibility"],
-"oracle": "Carry your fire wisely.",
-"meaning": "The Torch illuminates and transforms. Fire can warm, guide, or destroy depending on how it is used. This card asks you to wield your power consciously.",
-"image": "15-the-torch.png"
-},
-{
-"number": 16,
-"title": "The Lightning",
-"keywords": ["Revelation", "Liberation", "Change"],
-"oracle": "Let what no longer serves be struck away.",
-"meaning": "Lightning arrives without warning. It shatters false structures and illuminates hidden truths in a single flash.",
-"image": "16-the-lightning.png"
-},
-{
-"number": 17,
-"title": "The Starling",
-"keywords": ["Hope", "Guidance", "Destiny"],
-"oracle": "Follow the signs.",
-"meaning": "The Starling flies within a greater pattern of murmuration. This card suggests synchronicity, community, and trust in a larger unfolding.",
-"image": "17-the-starling.png"
-},
-{
-"number": 18,
-"title": "The Moon",
-"keywords": ["Dreams", "Intuition", "Mystery"],
-"oracle": "Listen to what rises from the depths.",
-"meaning": "The Moon governs the hidden currents of the psyche. It invites you into the realm of dreams, symbols, and subconscious wisdom.",
-"image": "18-the-moon.png"
-},
-{
-"number": 19,
-"title": "The Sun",
-"keywords": ["Consciousness", "Vitality", "Illumination"],
-"oracle": "Step into the light of awareness.",
-"meaning": "The Sun reveals what was hidden and nourishes what is true. This card brings clarity, confidence, and life-giving energy.",
-"image": "19-the-sun.png"
-},
-{
-"number": 20,
-"title": "The Well",
-"keywords": ["Source", "Wisdom", "Renewal"],
-"oracle": "Draw nourishment from your deepest source.",
-"meaning": "The Well connects the visible world to hidden waters below. It is a place of healing, memory, and deep knowing.",
-"image": "20-the-well.png"
-},
-{
-"number": 21,
-"title": "The Mountain",
-"keywords": ["Mastery", "Attainment", "Perspective"],
-"oracle": "Honor how far you have come.",
-"meaning": "The Mountain is the summit earned through perseverance. It represents achievement, wisdom, and the view gained through effort.",
-"image": "21-the-mountain.png"
-},
-{
-"number": 22,
-"title": "Atlas",
-"keywords": ["Responsibility", "Endurance", "Legacy"],
-"oracle": "Carry only what is truly yours to bear.",
-"meaning": "Atlas bears the heavens. This card speaks of stewardship, duty, and the strength required to support something greater than oneself.",
-"image": "22-the-atlas.png"
-},
-{
-"number": 23,
-"title": "The Hawk",
-"keywords": ["Vision", "Clarity", "Expansion"],
-"oracle": "Rise above the situation and observe.",
-"meaning": "The Hawk sees what others miss. This card sharpens perspective and reveals opportunities hidden from ground level.",
-"image": "23-the-hawk.png"
-},
-{
-"number": 24,
-"title": "The Storm",
-"keywords": ["Power", "Action", "Transformation"],
-"oracle": "Become the force that clears the obstacles between you and the future.",
-"meaning": "The Storm clears stagnant air and reshapes the landscape. It is a force of change that cannot be ignored.",
-"image": "24-the-storm.png"
-},
-{
-"number": 25,
-"title": "The Vulture",
-"keywords": ["Purification", "Release", "Wisdom"],
-"oracle": "Let what no longer nourishes you fall away.",
-"meaning": "The Vulture transforms death into life. Nothing is wasted. This card asks you to release what has completed its purpose.",
-"image": "25-the-vulture.png"
-},
-{
-"number": 26,
-"title": "The Eye of Horus",
-"keywords": ["Restoration", "Wholeness", "Divine Sight"],
-"oracle": "Trust your insights.",
-"meaning": "The Eye of Horus was destroyed and then healed. The restored eye was called the Wedjat, meaning 'whole' or 'healthy'. This card symbolizes healing, protection, and the restoration of vision after loss.",
-"image": "26-the-eye-of-horus.png"
-},
-{
-"number": 27,
-"title": "The Goat",
-"keywords": ["Mastery", "Perseverance", "Achievement"],
-"oracle": "Keep climbing. The summit is near.",
-"meaning": "The Goat climbs where others cannot. It represents discipline, resilience, and the final ascent toward realization.",
-"image": "27-the-goat.png"
-},
-{
-"number": 28,
-"title": "The Harpy",
-"keywords": ["Sovereignty", "Justice", "Revelation"],
-"oracle": "Stand fully in your power. What you have become cannot be undone.",
-"meaning": "The Harpy is the culmination of the journey. Once feared and misunderstood, she emerges as a guardian of sacred balance and divine justice. She has crossed every threshold and integrated every lesson.",
-"image": "28-the-harpy.png"
-}
+  {
+    "number": 0,
+    "title": "The Pearl",
+    "keywords": [
+      "Potential",
+      "Void",
+      "Origin"
+    ],
+    "oracle": "Trust what is gestating. Not all treasures are meant to be opened at once.",
+    "injury": "Loss of possibility",
+    "disorientation": "Emptiness",
+    "restoration": "Renewed potential",
+    "sovereignty": "Self-authorship",
+    "gift": "Trust in becoming",
+    "lunar_day": "Day 0",
+    "lunar_phase": "🌑 New Moon",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Seed",
+    "shadow": "Untapped potential"
+  },
+  {
+    "number": 1,
+    "title": "The Ear",
+    "keywords": [
+      "Vibration",
+      "Sound",
+      "The Calling"
+    ],
+    "oracle": "What is being called into existence?",
+    "injury": "Missed opportunity",
+    "disorientation": "Uncertainty",
+    "restoration": "Listening",
+    "sovereignty": "Purposeful action",
+    "gift": "Discernment",
+    "lunar_day": "Day 1",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Herald",
+    "shadow": "Refusal to listen"
+  },
+  {
+    "number": 2,
+    "title": "The Inner Eye",
+    "keywords": [
+      "Reflection",
+      "Duality",
+      "Awareness"
+    ],
+    "oracle": "What is being reflected back to you?",
+    "injury": "Self-deception",
+    "disorientation": "Confusion",
+    "restoration": "Awareness",
+    "sovereignty": "Clear perception",
+    "gift": "Insight",
+    "lunar_day": "Day 2",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Witness",
+    "shadow": "Self-deception"
+  },
+  {
+    "number": 3,
+    "title": "The Shattered Shell",
+    "keywords": [
+      "Creation",
+      "Growth",
+      "Emergence"
+    ],
+    "oracle": "Honor the process of becoming.",
+    "injury": "Fear of change",
+    "disorientation": "Vulnerability",
+    "restoration": "Emergence",
+    "sovereignty": "Authentic identity",
+    "gift": "Courage",
+    "lunar_day": "Day 3",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Growth",
+    "shadow": "Fear of emergence"
+  },
+  {
+    "number": 4,
+    "title": "The Hearthstone",
+    "keywords": [
+      "Foundation",
+      "Stability",
+      "Belonging"
+    ],
+    "oracle": "Strengthen your foundations.",
+    "injury": "Loss of belonging",
+    "disorientation": "Rootlessness",
+    "restoration": "Stability",
+    "sovereignty": "Inner security",
+    "gift": "Sanctuary",
+    "lunar_day": "Day 4",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Guardian",
+    "shadow": "Attachment to false security"
+  },
+  {
+    "number": 5,
+    "title": "The Selkie",
+    "keywords": [
+      "Change",
+      "Freedom",
+      "Transformation"
+    ],
+    "oracle": "Trust the crossing.",
+    "injury": "Exile",
+    "disorientation": "Between worlds",
+    "restoration": "Reconciliation",
+    "sovereignty": "Freedom",
+    "gift": "Adaptability",
+    "lunar_day": "Day 5",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Exile",
+    "shadow": "Chronic exile"
+  },
+  {
+    "number": 6,
+    "title": "The Heart",
+    "keywords": [
+      "Love",
+      "Choice",
+      "Devotion"
+    ],
+    "oracle": "Let love guide your decision.",
+    "injury": "Betrayal",
+    "disorientation": "Ambivalence",
+    "restoration": "Devotion",
+    "sovereignty": "Conscious choice",
+    "gift": "Love",
+    "lunar_day": "Day 6",
+    "lunar_phase": "Waxing Crescent",
+    "lunar_gate": "Potential & Calling",
+    "theme": "Lover",
+    "shadow": "Misplaced devotion"
+  },
+  {
+    "number": 7,
+    "title": "The Satyr",
+    "keywords": [
+      "Quest",
+      "Curiosity",
+      "Seeking"
+    ],
+    "oracle": "Follow the path that awakens wonder.",
+    "injury": "Stagnation",
+    "disorientation": "Restlessness",
+    "restoration": "Curiosity",
+    "sovereignty": "Self-directed quest",
+    "gift": "Wonder",
+    "lunar_day": "Day 7",
+    "lunar_phase": "🌓 First Quarter",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Wanderer",
+    "shadow": "Aimless wandering"
+  },
+  {
+    "number": 8,
+    "title": "The Cave",
+    "keywords": [
+      "Initiation",
+      "Mystery",
+      "Transformation"
+    ],
+    "oracle": "The answers lie within.",
+    "injury": "Overwhelm",
+    "disorientation": "Withdrawal",
+    "restoration": "Reflection",
+    "sovereignty": "Self-knowledge",
+    "gift": "Inner wisdom",
+    "lunar_day": "Day 8",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Initiation",
+    "shadow": "Isolation without reflection"
+  },
+  {
+    "number": 9,
+    "title": "The Bone Skull",
+    "keywords": [
+      "Wisdom",
+      "Ancestry",
+      "Completion"
+    ],
+    "oracle": "Listen to the voices of your ancestors.",
+    "injury": "Loss",
+    "disorientation": "Grief",
+    "restoration": "Acceptance",
+    "sovereignty": "Ancestral wisdom",
+    "gift": "Perspective",
+    "lunar_day": "Day 9",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Ancestors",
+    "shadow": "Living in the past"
+  },
+  {
+    "number": 10,
+    "title": "The Wheel",
+    "keywords": [
+      "Cycles",
+      "Fate",
+      "Renewal"
+    ],
+    "oracle": "What cycle is ready to turn?",
+    "injury": "Resistance to change",
+    "disorientation": "Uncertainty",
+    "restoration": "Adaptation",
+    "sovereignty": "Trust in cycles",
+    "gift": "Timing",
+    "lunar_day": "Day 10",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Rebirth",
+    "shadow": "Resistance to change"
+  },
+  {
+    "number": 11,
+    "title": "The Mirror",
+    "keywords": [
+      "Truth",
+      "Awakening",
+      "Self-Knowledge"
+    ],
+    "oracle": "See yourself without distortion.",
+    "injury": "Illusion",
+    "disorientation": "Projection",
+    "restoration": "Truth",
+    "sovereignty": "Self-awareness",
+    "gift": "Clarity",
+    "lunar_day": "Day 11",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Recognition",
+    "shadow": "Projection and denial"
+  },
+  {
+    "number": 12,
+    "title": "The Bat",
+    "keywords": [
+      "Perspective",
+      "Surrender",
+      "Navigation"
+    ],
+    "oracle": "Trust what cannot yet be seen.",
+    "injury": "Confusion",
+    "disorientation": "Inversion",
+    "restoration": "Reorientation",
+    "sovereignty": "Trusting intuition",
+    "gift": "Navigation",
+    "lunar_day": "Day 12",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Perspective",
+    "shadow": "Disorientation"
+  },
+  {
+    "number": 13,
+    "title": "The Thorn",
+    "keywords": [
+      "Transformation",
+      "Wounding",
+      "Awakening"
+    ],
+    "oracle": "Honor the lesson within the wound.",
+    "injury": "Wounding",
+    "disorientation": "Pain",
+    "restoration": "Growth",
+    "sovereignty": "Resilience",
+    "gift": "Wisdom earned",
+    "lunar_day": "Day 13",
+    "lunar_phase": "Waxing Gibbous",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Wisdom",
+    "shadow": "Identification with the wound"
+  },
+  {
+    "number": 14,
+    "title": "The Angel",
+    "keywords": [
+      "Balance",
+      "Integration",
+      "Alchemy"
+    ],
+    "oracle": "Bring opposing forces into balance.",
+    "injury": "Fragmentation",
+    "disorientation": "Imbalance",
+    "restoration": "Integration",
+    "sovereignty": "Wholeness",
+    "gift": "Harmony",
+    "lunar_day": "Day 14",
+    "lunar_phase": "🌔 Nearly Full",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Healer",
+    "shadow": "Forced harmony"
+  },
+  {
+    "number": 15,
+    "title": "The Torch",
+    "keywords": [
+      "Power",
+      "Desire",
+      "Responsibility"
+    ],
+    "oracle": "Carry your fire wisely.",
+    "injury": "Powerlessness",
+    "disorientation": "Misdirected desire",
+    "restoration": "Empowerment",
+    "sovereignty": "Responsible power",
+    "gift": "Inspiration",
+    "lunar_day": "Day 15",
+    "lunar_phase": "🌕 Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Power",
+    "shadow": "Misuse of power"
+  },
+  {
+    "number": 16,
+    "title": "The Lightning",
+    "keywords": [
+      "Revelation",
+      "Liberation",
+      "Change"
+    ],
+    "oracle": "Let what no longer serves be struck away.",
+    "injury": "False certainty",
+    "disorientation": "Shock",
+    "restoration": "Liberation",
+    "sovereignty": "Authenticity",
+    "gift": "Revelation",
+    "lunar_day": "Day 16",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Illumination",
+    "shadow": "Destructive upheaval"
+  },
+  {
+    "number": 17,
+    "title": "The Starling",
+    "keywords": [
+      "Hope",
+      "Guidance",
+      "Destiny"
+    ],
+    "oracle": "Follow the signs.",
+    "injury": "Isolation",
+    "disorientation": "Aimlessness",
+    "restoration": "Connection",
+    "sovereignty": "Trust in guidance",
+    "gift": "Synchronicity",
+    "lunar_day": "Day 17",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Hope",
+    "shadow": "Following the flock blindly"
+  },
+  {
+    "number": 18,
+    "title": "The Moon",
+    "keywords": [
+      "Dreams",
+      "Intuition",
+      "Mystery"
+    ],
+    "oracle": "Listen to what rises from the depths.",
+    "injury": "Fear of the unknown",
+    "disorientation": "Uncertainty",
+    "restoration": "Intuition",
+    "sovereignty": "Inner knowing",
+    "gift": "Dreams",
+    "lunar_day": "Day 18",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Subconscious",
+    "shadow": "Illusion and fear"
+  },
+  {
+    "number": 19,
+    "title": "The Sun",
+    "keywords": [
+      "Consciousness",
+      "Vitality",
+      "Illumination"
+    ],
+    "oracle": "Step into the light of awareness.",
+    "injury": "Diminished confidence",
+    "disorientation": "Doubt",
+    "restoration": "Vitality",
+    "sovereignty": "Self-expression",
+    "gift": "Illumination",
+    "lunar_day": "Day 19",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Consciousness",
+    "shadow": "Ego inflation"
+  },
+  {
+    "number": 20,
+    "title": "The Well",
+    "keywords": [
+      "Source",
+      "Wisdom",
+      "Renewal"
+    ],
+    "oracle": "Draw nourishment from your deepest source.",
+    "injury": "Depletion",
+    "disorientation": "Spiritual thirst",
+    "restoration": "Renewal",
+    "sovereignty": "Deep wisdom",
+    "gift": "Nourishment",
+    "lunar_day": "Day 20",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Challenge & Transformation",
+    "theme": "Nourishment",
+    "shadow": "Emotional depletion"
+  },
+  {
+    "number": 21,
+    "title": "The Mountain",
+    "keywords": [
+      "Mastery",
+      "Attainment",
+      "Perspective"
+    ],
+    "oracle": "Honor how far you have come.",
+    "injury": "Discouragement",
+    "disorientation": "Feeling stuck",
+    "restoration": "Perseverance",
+    "sovereignty": "Mastery",
+    "gift": "Perspective",
+    "lunar_day": "Day 21",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Obstacles Overcome",
+    "shadow": "Pride in achievement"
+  },
+  {
+    "number": 22,
+    "title": "Atlas",
+    "keywords": [
+      "Responsibility",
+      "Endurance",
+      "Legacy"
+    ],
+    "oracle": "Carry only what is truly yours to bear.",
+    "injury": "Burden",
+    "disorientation": "Exhaustion",
+    "restoration": "Boundaries",
+    "sovereignty": "Stewardship",
+    "gift": "Endurance",
+    "lunar_day": "Day 22",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Responsibility",
+    "shadow": "Carrying what is not yours"
+  },
+  {
+    "number": 23,
+    "title": "The Hawk",
+    "keywords": [
+      "Vision",
+      "Clarity",
+      "Expansion"
+    ],
+    "oracle": "Rise above the situation and observe.",
+    "injury": "Narrow vision",
+    "disorientation": "Tunnel vision",
+    "restoration": "Perspective",
+    "sovereignty": "Strategic clarity",
+    "gift": "Foresight",
+    "lunar_day": "Day 23",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Overview",
+    "shadow": "Detachment from human reality"
+  },
+  {
+    "number": 24,
+    "title": "The Storm",
+    "keywords": [
+      "Power",
+      "Action",
+      "Transformation"
+    ],
+    "oracle": "Become the force that clears the obstacles between you and the future.",
+    "injury": "Stagnation",
+    "disorientation": "Turmoil",
+    "restoration": "Transformation",
+    "sovereignty": "Directed power",
+    "gift": "Momentum",
+    "lunar_day": "Day 24",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Flood",
+    "shadow": "Chaos for its own sake"
+  },
+  {
+    "number": 25,
+    "title": "The Vulture",
+    "keywords": [
+      "Purification",
+      "Release",
+      "Wisdom"
+    ],
+    "oracle": "Let what no longer nourishes you, fall away.",
+    "injury": "Attachment",
+    "disorientation": "Clinging",
+    "restoration": "Release",
+    "sovereignty": "Acceptance",
+    "gift": "Purification",
+    "lunar_day": "Day 25",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Transformation",
+    "shadow": "Inability to release"
+  },
+  {
+    "number": 26,
+    "title": "The Eye of Horus",
+    "keywords": [
+      "Restoration",
+      "Wholeness",
+      "Divine Sight"
+    ],
+    "oracle": "Trust your insights.",
+    "injury": "Fragmentation",
+    "disorientation": "Loss of faith",
+    "restoration": "Healing",
+    "sovereignty": "Wholeness",
+    "gift": "Restored vision",
+    "lunar_day": "Day 26",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Wholeness",
+    "shadow": "Refusal to heal"
+  },
+  {
+    "number": 27,
+    "title": "The Goat",
+    "keywords": [
+      "Mastery",
+      "Perseverance",
+      "Achievement"
+    ],
+    "oracle": "Keep climbing. The summit is near.",
+    "injury": "Self-doubt",
+    "disorientation": "Fatigue",
+    "restoration": "Determination",
+    "sovereignty": "Achievement",
+    "gift": "Confidence",
+    "lunar_day": "Day 27",
+    "lunar_phase": "Full Moon Threshold",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Accomplishment",
+    "shadow": "Obsession with the summit"
+  },
+  {
+    "number": 28,
+    "title": "The Harpy",
+    "keywords": [
+      "Sovereignty",
+      "Justice",
+      "Revelation"
+    ],
+    "oracle": "Stand fully in your power. What you have become cannot be undone.",
+    "injury": "Injustice",
+    "disorientation": "Disempowerment",
+    "restoration": "Restoration of self",
+    "sovereignty": "Sovereignty",
+    "gift": "Earned wisdom",
+    "lunar_day": "Day 28",
+    "lunar_phase": "🌕 Full Moon / The Harpy",
+    "lunar_gate": "Mastery & Sovereignty",
+    "theme": "Sovereignty",
+    "shadow": "Vengeance masquerading as justice"
+  }
 ]
