@@ -31,97 +31,83 @@
       font-style: italic;
       opacity: .8;
     }
+
     .spread {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 20px;
-margin-top: 30px;
-}
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
 
-.pos3 {
-grid-column: 2;
-}
+    .pos3 { grid-column: 2; }
+    .pos2 { grid-column: 1; }
+    .pos4 { grid-column: 3; }
+    .pos1 { grid-column: 2; }
+    .pos5 { grid-column: 2; }
 
-.pos2 {
-grid-column: 1;
-}
+    .flock-card {
+      text-align: center;
+    }
 
-.pos4 {
-grid-column: 3;
-}
+    .flock-card img {
+      width: 180px;
+      max-width: 100%;
+    }
 
-.pos1 {
-grid-column: 2;
-}
+    #reading p {
+      line-height: 1.6;
+    }
 
-.pos5 {
-grid-column: 2;
-}
+    .harpy-reading {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid #444;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+    }
 
-.flock-card {
-text-align: center;
-}
+    .harpy-reading p {
+      white-space: pre-line;
+      text-align: left;
+      line-height: 1.9;
+    }
 
-.flock-card img {
-width: 180px;
-max-width: 100%;
-}
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.85);
+    }
 
-#reading p {
-  line-height: 1.6;
-}
+    .modal-content {
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      margin: 20px auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+    }
 
-.harpy-reading {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border: 1px solid #444;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-}
-.modal {
-display: none;
-position: fixed;
-z-index: 1000;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
+    .modal-content img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+    }
 
-background: rgba(0,0,0,.85);
-}
-
-.modal-content {
-max-width: 800px;
-max-height: 90vh;
-overflow-y: auto;
-
-margin: 20px auto;
-
-background: #111;
-padding: 20px;
-border-radius: 12px;
-}
-
-
-.modal-content img {
-width: 100%;
-max-width: 450px;
-height: auto;
-}
-
-.close {
-position: sticky;
-top: 0;
-
-float: right;
-font-size: 32px;
-cursor: pointer;
-
-background: #111;
-padding: 5px 10px;
-}
-
-
+    .close {
+      position: sticky;
+      top: 0;
+      float: right;
+      font-size: 32px;
+      cursor: pointer;
+      background: #111;
+      padding: 5px 10px;
+    }
   </style>
 </head>
 
@@ -133,125 +119,366 @@ padding: 5px 10px;
 <button onclick="drawFlock()">The Flock Spread</button>
 
 <div id="cardModal" class="modal">
-
   <div class="modal-content">
-
     <span class="close" onclick="closeModal()">&times;</span>
-
     <div id="modalBody"></div>
-
   </div>
-
 </div>
 
 <div id="reading"></div>
 
 <script>
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
 let cards = [];
+let currentFlock = [];
 
 fetch("cards.json")
   .then(r => r.json())
   .then(data => cards = data);
 
 
-let harpyCards = [];
+// ─── Spread position descriptions ────────────────────────────────────────────
 
-fetch("harpy_cards.json")
-  .then(r => r.json())
-  .then(data => {
-    harpyCards = data;
-    console.log(
-      "Harpy engine loaded:",
-      harpyCards.length,
-      "cards"
-    );
-    // optional additional debug log
-    if (typeof flock !== 'undefined') console.log(flock);
-  });
+const spreadPositions = {
+  "1 — The Wound":               "What hurts? What is asking for acknowledgment?",
+  "2 — What Was Lost":           "What was taken, forgotten, abandoned, or surrendered?",
+  "3 — What Watches Over You":   "Hidden allies, intuition, ancestors, and unseen support.",
+  "4 — What Must Be Reclaimed":  "The strength, truth, or gift ready to return.",
+  "5 — The Harpy\u0027s Gift":   "The wisdom emerging from the restoration journey."
+};
+
+
+// ─── Per-card positional meanings ────────────────────────────────────────────
+
+const positionMeanings = {
+
+  "The Pearl": {
+    wound:   "The Pearl as wound speaks of potential that was sealed away before it could bloom — a self that was never allowed to form fully.",
+    loss:    "Something precious was kept hidden or taken before it could be shared — innocence, possibility, or an unlived life.",
+    guide:   "The Pearl watches over you as pure potential. Within the wound itself lies the seed of something rare and beautiful.",
+    reclaim: "The Pearl asks you to reclaim your original wholeness — the self that existed before the wound began its layering.",
+    gift:    "The Harpy offers you the Pearl: the understanding that your wound became your greatest treasure."
+  },
+
+  "The Ear": {
+    wound:   "The Ear as wound names an injury to your voice, your call, or your right to be heard. Something silenced you.",
+    loss:    "A calling went unheard, or a truth was spoken into silence. The loss lives in what was never truly listened to.",
+    guide:   "The Ear watches over you, attuned to signals others miss. The guidance you need is already sounding — listen differently.",
+    reclaim: "It is time to reclaim your capacity to hear yourself clearly and to speak what has been waiting inside you.",
+    gift:    "The Harpy offers you the Ear: the deep listening that transforms signal into meaning, and silence into wisdom."
+  },
+
+  "The Inner Eye": {
+    wound:   "The Inner Eye as wound names a fracture in self-perception — a time when your own reflection was distorted or denied.",
+    loss:    "Something was lost in the gap between who you are and who you were told to be. Your own awareness was turned against you.",
+    guide:   "The Inner Eye watches over you, perceiving both sides of every truth. You are more clearly seen than you know.",
+    reclaim: "Reclaim the clarity of your own perception. You are allowed to trust what you see.",
+    gift:    "The Harpy offers you the Inner Eye: vision that holds complexity without collapsing, and sees the self without flinching."
+  },
+
+  "The Shattered Shell": {
+    wound:   "The Shattered Shell as wound speaks of a protective structure that broke before you were ready — an emergence forced before its time.",
+    loss:    "Something that was sheltering you was lost or broken. The safety of becoming was interrupted.",
+    guide:   "The Shattered Shell watches over you as a reminder that what breaks open is not destroyed — it is releasing what grew within.",
+    reclaim: "Reclaim the knowledge that emergence, even painful emergence, is growth. You survived the breaking.",
+    gift:    "The Harpy offers you the Shattered Shell: proof that you were strong enough to outgrow what once contained you."
+  },
+
+  "The Hearthstone": {
+    wound:   "The Hearthstone as wound names an injury to belonging — a home that failed you, a foundation that gave way, a place you could never quite return to.",
+    loss:    "A sense of home, rootedness, or unconditional belonging was lost. You have been building on uncertain ground.",
+    guide:   "The Hearthstone watches over you. Somewhere within you is a warmth that has not gone out. You carry shelter inside yourself.",
+    reclaim: "Reclaim your right to feel at home — in your body, your life, your own company.",
+    gift:    "The Harpy offers you the Hearthstone: the understanding that belonging can be built, not just found."
+  },
+
+  "The Selkie": {
+    wound:   "The Selkie as wound names the grief of living between worlds — belonging fully to neither, longing always for the other shore.",
+    loss:    "A skin was taken, or surrendered. Freedom, wildness, or a truer self was left behind at the threshold.",
+    guide:   "The Selkie watches over you from the in-between. She knows how to cross. She will show you the way back to yourself.",
+    reclaim: "Reclaim the skin that was taken. Your wildness, your freedom, your capacity to belong to yourself — these are not gone.",
+    gift:    "The Harpy offers you the Selkie: sovereignty reclaimed after exile, and the courage to cross back."
+  },
+
+  "The Heart": {
+    wound:   "The Heart as wound names love that was betrayed, withheld, or turned against you. An injury at the core of your capacity to give and receive.",
+    loss:    "Something beloved was lost — a person, a bond, or the part of yourself that trusted love without armor.",
+    guide:   "The Heart watches over you, still beating. The capacity for love is not gone. It is waiting to be trusted again.",
+    reclaim: "Reclaim your willingness to love — beginning with yourself. What you devoted yourself to taught you what matters.",
+    gift:    "The Harpy offers you the Heart: the understanding that love, even when it wounds, expands what we are capable of."
+  },
+
+  "The Satyr": {
+    wound:   "The Satyr as wound names a curiosity that was punished, a wandering that was called wrong, a seeking that was never allowed to rest in wonder.",
+    loss:    "A sense of adventure, play, or the freedom to follow your instincts was lost somewhere along the path.",
+    guide:   "The Satyr watches over you — wild, irreverent, alive. The path that awakens wonder is still available to you.",
+    reclaim: "Reclaim your right to seek, to wander, to not yet know the answer. The journey itself is the teaching.",
+    gift:    "The Harpy offers you the Satyr: the restoration of curiosity as a sacred force, not a frivolous one."
+  },
+
+  "The Cave": {
+    wound:   "The Cave as wound names a retreat that became exile — a withdrawal that was forced, or a darkness entered without a guide.",
+    loss:    "Something was lost in the depths: trust in your own inner world, or the courage to descend and return.",
+    guide:   "The Cave watches over you. Within its darkness is not emptiness but the unlit fire of your own knowing.",
+    reclaim: "Reclaim the wisdom held in solitude. What you discovered in your own depths cannot be taken from you.",
+    gift:    "The Harpy offers you the Cave: the knowledge that the underworld is not the end. What enters the dark can be transformed."
+  },
+
+  "The Bone Skull": {
+    wound:   "The Bone Skull as wound names an encounter with loss, death, or ending that reshaped everything — a grief that was not allowed to complete itself.",
+    loss:    "The loss here is carried in the bones: someone, something, or a version of yourself that is gone and has not yet been mourned fully.",
+    guide:   "The Bone Skull watches over you as ancestor and witness. The wisdom of those who came before does not disappear — it accumulates.",
+    reclaim: "Reclaim the relationship between grief and wisdom. What has ended can still teach. What was lost still shaped you.",
+    gift:    "The Harpy offers you the Bone Skull: the understanding that completion is not failure, and that memory is a form of preservation."
+  },
+
+  "The Wheel": {
+    wound:   "The Wheel as wound names being caught in a cycle that turns without your consent — forces of fate that moved over you without mercy.",
+    loss:    "A sense of agency, timing, or control was lost to forces larger than yourself. You were spun when you needed to stand still.",
+    guide:   "The Wheel watches over you, turning still. What descended will ascend. The pattern has not abandoned you.",
+    reclaim: "Reclaim your relationship to change itself — not as something done to you, but as something you can move within.",
+    gift:    "The Harpy offers you the Wheel: the understanding that cycles are not punishment. Rising again is already written into the pattern."
+  },
+
+  "The Mirror": {
+    wound:   "The Mirror as wound names a distorted reflection — a self-image shaped by cruelty, comparison, or the gaze of those who could not truly see you.",
+    loss:    "An honest relationship with yourself was lost. You learned to look away, or to see only what others projected.",
+    guide:   "The Mirror watches over you, clear and unflinching. The truth of who you are has not been erased — only obscured.",
+    reclaim: "Reclaim the ability to see yourself without distortion. The honest mirror reveals beauty as much as it reveals truth.",
+    gift:    "The Harpy offers you the Mirror: clear self-knowledge, earned through the courage to look without flinching."
+  },
+
+  "The Bat": {
+    wound:   "The Bat as wound names a disorientation — a loss of bearings, a period of forced surrender, or a reversal that left you unable to find your way.",
+    loss:    "A trusted sense of direction was lost. You were left navigating darkness without the tools you were taught to rely on.",
+    guide:   "The Bat watches over you. What you cannot see, you can still sense. Trust the frequencies your body already knows.",
+    reclaim: "Reclaim your capacity to navigate without certainty. Your other senses are more powerful than you have been taught to believe.",
+    gift:    "The Harpy offers you the Bat: the gift of echolocation — finding your way through the dark by what returns to you."
+  },
+
+  "The Thorn": {
+    wound:   "The Thorn names the wound directly: a piercing that was necessary but still left its mark. The pain was real, even if growth came through it.",
+    loss:    "What was lost was the illusion that you could remain unchanged. The Thorn took something that could not be kept.",
+    guide:   "The Thorn watches over you as the guardian of necessary truths. It will not let you remain comfortable in what no longer serves.",
+    reclaim: "Reclaim the strength that grew through the wound. The Thorn was never only destruction — it was also initiation.",
+    gift:    "The Harpy offers you the Thorn: the understanding that what pierced you was also what woke you."
+  },
+
+  "The Angel": {
+    wound:   "The Angel as wound names a rupture in balance — a time when the scales tipped beyond recovery, and integration felt impossible.",
+    loss:    "Harmony, wholeness, or the sense of being in right relationship with yourself and the world was lost.",
+    guide:   "The Angel watches over you, pouring from one vessel to another. The work of integration is already underway, even now.",
+    reclaim: "Reclaim your capacity for balance — not perfection, but the sacred art of holding opposing truths at once.",
+    gift:    "The Harpy offers you the Angel: the alchemy of healing, where what was broken is not discarded but blended into something whole."
+  },
+
+  "The Torch": {
+    wound:   "The Torch as wound names a misuse of power — your own fire turned against you, or wielded over you without care.",
+    loss:    "The loss is in the flame itself: a passion, a purpose, or a vital force that was extinguished or taken.",
+    guide:   "The Torch watches over you. The fire in you has not gone out — it has gone underground, waiting for a safer container.",
+    reclaim: "Reclaim your fire. You are allowed to want, to pursue, to burn with purpose. Power held consciously is a gift.",
+    gift:    "The Harpy offers you the Torch: the flame carried forward from the wreckage, burning now for something true."
+  },
+
+  "The Lightning": {
+    wound:   "The Lightning as wound names a sudden shattering — a revelation, loss, or disruption that arrived without warning and changed everything.",
+    loss:    "What was lost was the structure you built your life around. The lightning did not distinguish between what served you and what didn't.",
+    guide:   "The Lightning watches over you. What it struck was already hollow. The flash illuminated a truth that was always there.",
+    reclaim: "Reclaim the clarity that came after the strike. You know now what was false. That knowledge is yours to keep.",
+    gift:    "The Harpy offers you the Lightning: the liberation of the strike — freedom found in what could no longer stand."
+  },
+
+  "The Starling": {
+    wound:   "The Starling as wound names a disconnection from the larger pattern — isolation from community, belonging, or the sense of moving in harmony with something greater.",
+    loss:    "The feeling of being part of something — a flock, a current, a purpose — was lost. You have been flying alone.",
+    guide:   "The Starling watches over you as part of the murmuration. You are not as alone as you feel. The pattern includes you.",
+    reclaim: "Reclaim your place in the larger unfolding. Your movement matters. Your direction contributes to the shape of the whole.",
+    gift:    "The Harpy offers you the Starling: the reminder that destiny is not only personal — it is also communal, relational, and alive."
+  },
+
+  "The Moon": {
+    wound:   "The Moon as wound names the terror of the depths — a psyche that overwhelmed you, dreams that brought no rest, or intuition that was punished.",
+    loss:    "Something was lost in the tide: trust in your own inner world, or a connection to the mystery beneath the surface of things.",
+    guide:   "The Moon watches over you from the depths. What rises from the unconscious is not your enemy. It is asking to be known.",
+    reclaim: "Reclaim your relationship with what lives beneath the surface — your dreams, your instincts, your hidden knowing.",
+    gift:    "The Harpy offers you the Moon: the wisdom of the depths, made available to you now that you are ready to receive it."
+  },
+
+  "The Sun": {
+    wound:   "The Sun as wound names an injury to your very radiance — a dimming of confidence, vitality, or the right to take up space and be seen.",
+    loss:    "Clarity, joy, or the freedom to shine openly was lost. Something or someone cast a long shadow over your light.",
+    guide:   "The Sun watches over you, steady and unwavering. Even when it cannot be seen, it has not gone anywhere.",
+    reclaim: "Reclaim your right to be visible, to be joyful, to be luminous without apology.",
+    gift:    "The Harpy offers you the Sun: the return of radiance — not as performance, but as your natural state."
+  },
+
+  "The Well": {
+    wound:   "The Well as wound names a severance from your own source — a depletion so deep that you forgot there was water beneath you at all.",
+    loss:    "Access to nourishment, renewal, or the deep knowing within you was lost. You have been drawing from an empty bucket.",
+    guide:   "The Well watches over you. The hidden waters have not dried up. They are waiting for you to lower the rope again.",
+    reclaim: "Reclaim your connection to your own source of replenishment. You are allowed to drink.",
+    gift:    "The Harpy offers you the Well: restored access to the deep waters — memory, wisdom, and the renewal that comes from within."
+  },
+
+  "The Mountain": {
+    wound:   "The Mountain as wound names an impossible climb — a demand for mastery before the path was ready, or a summit used to measure your worth.",
+    loss:    "The joy of the ascent was lost to the pressure of arrival. Or the mountain was taken from you before you could reach what it promised.",
+    guide:   "The Mountain watches over you. It does not judge how slowly you climb. It is simply there, offering perspective.",
+    reclaim: "Reclaim the view you have already earned. You have climbed further than you know.",
+    gift:    "The Harpy offers you the Mountain: the perspective that only height can give — and the right to rest at the summit."
+  },
+
+  "Atlas": {
+    wound:   "Atlas as wound names the weight that was placed on you too early, or the burden you took on because no one else would carry it.",
+    loss:    "Your own lightness was lost under the weight of what you have been holding for others.",
+    guide:   "Atlas watches over you, not as taskmaster but as witness. He knows the cost of what you carry. He sees it clearly.",
+    reclaim: "Reclaim discernment about what is truly yours to bear. You are allowed to set down what was never your burden.",
+    gift:    "The Harpy offers you the wisdom of Atlas: that true strength knows the difference between what it must hold and what it can release."
+  },
+
+  "The Hawk": {
+    wound:   "The Hawk as wound names a forced grounding — a time when your vision was clipped, your perspective narrowed, your ability to rise above the situation denied.",
+    loss:    "The long view was lost. You have been too close to what is happening to see its shape.",
+    guide:   "The Hawk watches over you from above. The pattern is visible from where it circles. Trust is arriving from a higher vantage.",
+    reclaim: "Reclaim your capacity to rise above the immediate and see what is actually unfolding.",
+    gift:    "The Harpy offers you the Hawk: the clarity of altitude, and the vision to see what has been hidden in plain sight."
+  },
+
+  "The Storm": {
+    wound:   "The Storm as wound names a devastation — a force that swept through your life and left nothing unchanged.",
+    loss:    "Stability, structure, or the landscape you knew was lost to the storm's passage.",
+    guide:   "The Storm watches over you — not with threat, but with the knowledge of what clearing feels like after. The air is different now.",
+    reclaim: "Reclaim your own power to move, to shift, to act as a force of change rather than only its recipient.",
+    gift:    "The Harpy offers you the Storm: the understanding that you survived the weather, and the landscape that remains is yours to tend."
+  },
+
+  "The Vulture": {
+    wound:   "The Vulture as wound names an encounter with what decays — loss that lingered, grief that could not be released, or a relationship with endings that felt contaminated.",
+    loss:    "Something was held onto past its completion. Or the loss itself became the wound, cycling without resolution.",
+    guide:   "The Vulture watches over you as the great purifier. Nothing is wasted. What has ended is already being transformed.",
+    reclaim: "Reclaim your relationship with endings. Release what has completed its purpose. The Vulture knows that clearing is sacred.",
+    gift:    "The Harpy offers you the Vulture: the wisdom that what falls away feeds what comes next, and that release is an act of creation."
+  },
+
+  "The Eye of Horus": {
+    wound:   "The Eye of Horus as wound names a vision that was shattered — perception damaged, trust in what you saw broken, or sight taken from you in some form.",
+    loss:    "Wholeness was lost. Something was destroyed that felt irreplaceable — a sense of protection, divine sight, or the feeling of being held.",
+    guide:   "The Eye of Horus watches over you as the restored vision. What was broken has been healed before. It can be healed again.",
+    reclaim: "Reclaim the sight that was taken. Your perception, your insight, your ability to see truly — these are being restored.",
+    gift:    "The Harpy offers you the Eye of Horus: the Wedjat, the whole eye — the understanding that restoration is possible even after profound loss."
+  },
+
+  "The Goat": {
+    wound:   "The Goat as wound names a relentless climb that wore you down — discipline turned to punishment, perseverance demanded without rest.",
+    loss:    "The joy of the ascent was replaced by obligation. Something was lost in the grinding forward motion.",
+    guide:   "The Goat watches over you on the impossible slope. It knows paths that have no name. It will not turn back.",
+    reclaim: "Reclaim your resilience — not as a demand, but as a gift. You are more capable of the climb than you currently believe.",
+    gift:    "The Harpy offers you the Goat: the proof that the summit is reachable, and that your endurance has brought you closer than you know."
+  },
+
+  "The Harpy": {
+    wound:   "The Harpy as wound names the cost of power — the misunderstanding, the fear others directed at you, the way your strength was called dangerous.",
+    loss:    "Something was lost in the exile: sovereignty, the freedom to be fully yourself, or the right to be seen without distortion.",
+    guide:   "The Harpy watches over you as your own culmination. She is what you are becoming. She has already survived what you are moving through.",
+    reclaim: "Reclaim your sovereignty completely. You have crossed every threshold. What you have become cannot be undone.",
+    gift:    "The Harpy offers you herself: the understanding that you were never the monster they named. You were always the guardian."
+  }
+
+};
+
+
+// ─── Relationships between card pairs ────────────────────────────────────────
+
+const relationships = {
+  "The Bat|The Angel":       "A change in perspective precedes the return of balance.",
+  "The Sun|The Pearl":       "Something dimmed your light and narrowed your sense of possibility.",
+  "The Thorn|The Torch":     "Pain is being transformed into power.",
+  "The Moon|The Ear":        "Something emerging from the unconscious is asking to be heard.",
+  "The Selkie|The Harpy":    "The exile returns carrying hard-won sovereignty.",
+  "The Ear|The Starling":    "A message once ignored is ready to be heard.",
+  "The Moon|The Well":       "What was hidden beneath the surface is seeking expression.",
+  "The Goat|The Mountain":   "Persistence reveals a path where none seemed possible.",
+  "The Cave|The Torch":      "Illumination arrives after a period of retreat.",
+  "The Wheel|The Storm":     "The forces disrupting your life are also reshaping it.",
+  "The Vulture|The Pearl":   "Something once mourned may still contain hidden value.",
+  "The Lightning|The Angel": "A shock becomes the catalyst for realignment."
+};
+
+
+// ─── Draw single card ────────────────────────────────────────────────────────
 
 function drawCard() {
-
   const card = cards[Math.floor(Math.random() * cards.length)];
-
   document.getElementById("reading").innerHTML = `
     <h2>${card.title}</h2>
-
     <img src="images/${card.image}" alt="${card.title}">
-
-    <p class="keywords">
-      ${card.keywords.join(" • ")}
-    </p>
-
+    <p class="keywords">${card.keywords.join(" • ")}</p>
     <h3>Oracle</h3>
-
     <p>${card.oracle}</p>
-
     <h3>Meaning</h3>
-
     <p>${card.meaning}</p>
   `;
 }
+
+
+// ─── Draw flock spread ───────────────────────────────────────────────────────
+
 function shuffle(array) {
-return [...array].sort(() => Math.random() - 0.5);
+  return [...array].sort(() => Math.random() - 0.5);
 }
-let currentFlock = [];
 
 function drawFlock() {
   currentFlock = shuffle(cards).slice(0, 5);
-const flock = currentFlock;
-
-document.getElementById("reading").innerHTML = `
-<pre>${JSON.stringify(flock[0], null, 2)}</pre>
-`;
-return;
+  const flock = currentFlock;
 
   document.getElementById("reading").innerHTML = `
     <h2>The Flock Spread</h2>
 
-<div class="spread">
+    <div class="spread">
 
-  <div class="flock-card pos3">
-    <h3>3 — What Watches Over You</h3>
-    <img src="images/${flock[2].image}"
-         alt="${flock[2].title}"
-         onclick='openFlockCard(2, "3 — What Watches Over You")'>
-    <p>${flock[2].title}</p>
-  </div>
+      <div class="flock-card pos3">
+        <h3>3 — What Watches Over You</h3>
+        <img src="images/${flock[2].image}"
+             alt="${flock[2].title}"
+             onclick='openFlockCard(2, "3 \u2014 What Watches Over You")'>
+        <p>${flock[2].title}</p>
+      </div>
 
-  <div class="flock-card pos2">
-    <h3>2 — What Was Lost</h3>
-    <img src="images/${flock[1].image}"
-         alt="${flock[1].title}"
-         onclick='openFlockCard(1, "2 — What Was Lost")'>
-    <p>${flock[1].title}</p>
-  </div>
+      <div class="flock-card pos2">
+        <h3>2 — What Was Lost</h3>
+        <img src="images/${flock[1].image}"
+             alt="${flock[1].title}"
+             onclick='openFlockCard(1, "2 \u2014 What Was Lost")'>
+        <p>${flock[1].title}</p>
+      </div>
 
-  <div class="flock-card pos4">
-    <h3>4 — What Must Be Reclaimed</h3>
-    <img src="images/${flock[3].image}"
-         alt="${flock[3].title}"
-         onclick='openFlockCard(3, "4 — What Must Be Reclaimed")'>
-    <p>${flock[3].title}</p>
-  </div>
+      <div class="flock-card pos4">
+        <h3>4 — What Must Be Reclaimed</h3>
+        <img src="images/${flock[3].image}"
+             alt="${flock[3].title}"
+             onclick='openFlockCard(3, "4 \u2014 What Must Be Reclaimed")'>
+        <p>${flock[3].title}</p>
+      </div>
 
-  <div class="flock-card pos1">
-    <h3>1 — The Wound</h3>
-    <img src="images/${flock[0].image}"
-         alt="${flock[0].title}"
-         onclick='openFlockCard(0, "1 — The Wound")'>
-    <p>${flock[0].title}</p>
-  </div>
+      <div class="flock-card pos1">
+        <h3>1 — The Wound</h3>
+        <img src="images/${flock[0].image}"
+             alt="${flock[0].title}"
+             onclick='openFlockCard(0, "1 \u2014 The Wound")'>
+        <p>${flock[0].title}</p>
+      </div>
 
-  <div class="flock-card pos5">
-    <h3>5 — The Harpy's Gift</h3>
-    <img src="images/${flock[4].image}"
-         alt="${flock[4].title}"
-         onclick='openFlockCard(4, "5 — The Harpy&apos;s Gift")'>
-    <p>${flock[4].title}</p>
-  </div>
+      <div class="flock-card pos5">
+        <h3>5 — The Harpy&#39;s Gift</h3>
+        <img src="images/${flock[4].image}"
+             alt="${flock[4].title}"
+             onclick='openFlockCard(4, "5 \u2014 The Harpy\u0027s Gift")'>
+        <p>${flock[4].title}</p>
+      </div>
 
-</div>
-  
+    </div>
 
     <hr>
 
@@ -262,16 +489,13 @@ return;
   `;
 }
 
-const spreadPositions = {
-  "1 — The Wound": "What hurts? What is asking for acknowledgment?",
-  "2 — What Was Lost": "What was taken, forgotten, abandoned, or surrendered?",
-  "3 — What Watches Over You": "Hidden allies, intuition, ancestors, and unseen support.",
-  "4 — What Must Be Reclaimed": "The strength, truth, or gift ready to return.",
-  "5 — The Harpy's Gift": "The wisdom emerging from the restoration journey."
-};
+
+// ─── Modal ───────────────────────────────────────────────────────────────────
+
 function openFlockCard(index, position) {
   openCard(currentFlock[index], position);
 }
+
 function openCard(card, position) {
   const positionMeaning = spreadPositions[position] || "";
 
@@ -294,112 +518,58 @@ function closeModal() {
   document.getElementById("cardModal").style.display = "none";
 }
 
-const positionMeanings = {
 
-  "The Sun": {
-    wound: "An injury to confidence, vitality, joy, clarity, or personal truth."
-  },
+// ─── Reading generator ───────────────────────────────────────────────────────
 
-  "The Pearl": {
-    loss: "A loss of innocence, wonder, possibility, or unrealized potential."
-  },
+function generateReading(flock) {
 
-  "The Bat": {
-    guide: "Support arrives through a shift in perspective. Trust your other senses."
-  },
-
-  "The Angel": {
-    reclaim: "Balance, integration, and healing are ready to return."
-  },
-
-  "The Ear": {
-    gift: "A deeper calling is emerging. Listen carefully."
-  }
-
-};
-
-  function generateReading(flock) {
+  const pm0 = positionMeanings[flock[0].title];
+  const pm1 = positionMeanings[flock[1].title];
+  const pm2 = positionMeanings[flock[2].title];
+  const pm3 = positionMeanings[flock[3].title];
+  const pm4 = positionMeanings[flock[4].title];
 
   const wound =
-    positionMeanings[flock[0].title]?.wound ||
-    `${flock[0].title} reveals the central wound asking for your attention.`;
+    pm0?.wound ||
+    `${flock[0].title} names the central wound — the place that is asking for your honest attention.`;
+
+  const loss =
+    pm1?.loss ||
+    `${flock[1].title} suggests something valuable has been lost, forgotten, abandoned, or taken from you.`;
+
+  const guide =
+    pm2?.guide ||
+    `${flock[2].title} appears as guide and witness — a reminder that support is present even when it cannot be clearly seen.`;
+
+  const reclaim =
+    pm3?.reclaim ||
+    `${flock[3].title} points toward the strength, truth, or capacity that is now ready to be reclaimed.`;
+
+  const gift =
+    pm4?.gift ||
+    `${flock[4].title} emerges as the Harpy's Gift: the wisdom carried forward from this experience.`;
 
   const woundLoss =
-    relationships[
-      `${flock[0].title}|${flock[1].title}`
-    ] ||
-    relationships[
-      `${flock[1].title}|${flock[0].title}`
-    ] ||
+    relationships[`${flock[0].title}|${flock[1].title}`] ||
+    relationships[`${flock[1].title}|${flock[0].title}`] ||
     "";
 
   const guideReclaim =
-    relationships[
-      `${flock[2].title}|${flock[3].title}`
-    ] ||
-    relationships[
-      `${flock[3].title}|${flock[2].title}`
-    ] ||
+    relationships[`${flock[2].title}|${flock[3].title}`] ||
+    relationships[`${flock[3].title}|${flock[2].title}`] ||
     "";
 
-  return `
-    ${wound}
-
-    ${flock[1].title} suggests something valuable has been lost, forgotten, abandoned, or taken from you.
-
-    ${woundLoss}
-
-    Yet ${flock[2].title} appears as a guide, reminding you that support is present even when it cannot be clearly seen.
-
-    ${flock[3].title} points toward the strength, truth, or capacity that is ready to be reclaimed.
-
-    ${guideReclaim}
-
-    Finally, ${flock[4].title} emerges as the Harpy's Gift: the wisdom carried forward from this experience.
-
-    The Harpies do not promise justice.
-
-    They remind us that restoration remains possible even when justice never arrived.
-  `;
+  return [
+    wound,
+    loss,
+    woundLoss,
+    guide,
+    reclaim,
+    guideReclaim,
+    gift,
+    "The Harpies do not promise justice.\n\nThey remind us that restoration remains possible even when justice never arrived."
+  ].filter(Boolean).join("\n\n");
 }
-
-  const relationships = {
-  "The Bat|The Angel":
-    "A change in perspective precedes the return of balance.",
-
-  "The Sun|The Pearl":
-    "Something dimmed your light and narrowed your sense of possibility.",
-
-  "The Thorn|The Torch":
-    "Pain is being transformed into power.",
-
-  "The Moon|The Ear":
-    "Something emerging from the unconscious is asking to be heard.",
-
-  "The Selkie|The Harpy":
-    "The exile returns carrying hard-won sovereignty.",
-
-  "The Ear|The Starling":
-    "A message once ignored is ready to be heard.",
-
-  "The Moon|The Well":
-    "What was hidden beneath the surface is seeking expression.",
-
-  "The Goat|The Mountain":
-    "Persistence reveals a path where none seemed possible.",
-
-  "The Cave|The Torch":
-    "Illumination arrives after a period of retreat.",
-
-  "The Wheel|The Storm":
-    "The forces disrupting your life are also reshaping it.",
-
-  "The Vulture|The Pearl":
-    "Something once mourned may still contain hidden value.",
-
-  "The Lightning|The Angel":
-    "A shock becomes the catalyst for realignment."
-};
 
 </script>
 
