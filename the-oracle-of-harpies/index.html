@@ -153,6 +153,22 @@ fetch("cards.json")
   .then(r => r.json())
   .then(data => cards = data);
 
+
+let harpyCards = [];
+
+fetch("harpy_cards.json")
+  .then(r => r.json())
+  .then(data => {
+    harpyCards = data;
+    console.log(
+      "Harpy engine loaded:",
+      harpyCards.length,
+      "cards"
+    );
+    // optional additional debug log
+    if (typeof flock !== 'undefined') console.log(flock);
+  });
+
 function drawCard() {
 
   const card = cards[Math.floor(Math.random() * cards.length)];
@@ -183,6 +199,11 @@ let currentFlock = [];
 function drawFlock() {
   currentFlock = shuffle(cards).slice(0, 5);
 const flock = currentFlock;
+
+document.getElementById("reading").innerHTML = `
+<pre>${JSON.stringify(flock[0], null, 2)}</pre>
+`;
+return;
 
   document.getElementById("reading").innerHTML = `
     <h2>The Flock Spread</h2>
