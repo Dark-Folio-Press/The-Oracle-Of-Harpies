@@ -827,6 +827,18 @@ function drawFlock() {
   const woundCard =
     getHarpyData(flock[0].title) || {};
 
+  const lossCard =
+  getHarpyData(flock[1].title) || {};
+
+const guideCard =
+  getHarpyData(flock[2].title) || {};
+
+const reclaimCard =
+  getHarpyData(flock[3].title) || {};
+
+const giftCard =
+  getHarpyData(flock[4].title) || {};
+
   document.getElementById("reading").innerHTML = `
     <h2>The Flock Spread</h2>
 
@@ -859,19 +871,19 @@ function drawFlock() {
   </div>
 
   <div class="arc-step">
-    ② What Was Lost ............. ${woundCard.disorientation}
+    ② What Was Lost ............. ${lossCard.loss || "Unknown"}
   </div>
 
   <div class="arc-step">
-    ③ What Watches Over You ..... ${woundCard.restoration}
+    ③ What Watches Over You ..... ${guideCard.restoration}
   </div>
 
   <div class="arc-step">
-    ④ What Must Be Reclaimed .... ${woundCard.sovereignty}
+    ④ What Must Be Reclaimed .... ${reclaimCard.sovereignty}
   </div>
 
   <div class="arc-step">
-    ⑤ The Harpy's Gift .......... ${woundCard.gift}
+    ⑤ The Harpy's Gift .......... ${giftCard.gift}
   </div>
 
 </div>
