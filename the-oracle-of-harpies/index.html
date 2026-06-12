@@ -34,6 +34,20 @@
   letter-spacing: 0.03em;
   text-align: left;
 }
+
+.arc-image {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.arc-graphic {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
     body {
       font-family: 'EB Garamond', Georgia, serif;
       background-color: var(--navy);
@@ -864,26 +878,14 @@ const giftCard =
 
   <h3>🪺 The Nest</h3>
 
-  <h4>The Reclamation Arc</h4>
+  <h4>The Reclaimation Arc</h4>
 
-  <div class="arc-step">
-    ① The Wound ................. ${woundCard.injury}
-  </div>
-
-  <div class="arc-step">
-    ② What Was Lost ............. ${lossCard.loss || "Unknown"}
-  </div>
-
-  <div class="arc-step">
-    ③ What Watches Over You ..... ${guideCard.restoration}
-  </div>
-
-  <div class="arc-step">
-    ④ What Must Be Reclaimed .... ${reclaimCard.sovereignty}
-  </div>
-
-  <div class="arc-step">
-    ⑤ The Harpy's Gift .......... ${giftCard.gift}
+  <div class="arc-image">
+    <img
+      src="images/reclaimation-arc.png"
+      alt="The Reclaimation Arc"
+      class="arc-graphic"
+    />
   </div>
 
 </div>
